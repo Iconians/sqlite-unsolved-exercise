@@ -9,7 +9,7 @@ We will need to do a few things to set up our database. We will need three table
    - last_name string
    - motto string nullable
    <!-- CREATE TABLE users (
-   id INTEGER PRIMARY KEY AUTOINCREMENT,
+   id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
    first_name TEXT NOT NULL,
    last_name TEXT NOT NULL,
    motto TEXT NOT NULL); -->
@@ -19,7 +19,7 @@ We will need to do a few things to set up our database. We will need three table
    - id: auto incrementing primary id
    - name string
    <!-- CREATE TABLE dogs (
-   id INTEGER PRIMARY KEY AUTOINCREMENT,
+   id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
    name TEXT NOT NULL
    ); -->
 
@@ -32,39 +32,39 @@ We will need to do a few things to set up our database. We will need three table
    user_id INTEGER NOT NULL,
    dog_id INTEGER NOT NULL,
    FOREIGN KEY (user_id) REFERENCES users(id),
-   FOREIGN KEY (dog_id) REFERENCES dogs(id)
+   FOREIGN KEY (dog_id) REFERENCES adogs(id)
    ); -->
 
 We will also need to create some entries in these tables:
 
 1. Users
 
-   - 1Create a user named Jon Higgz, who's life motto is "I love coding".
-   <!-- INSERT INTO users (first_name, last_name, motto) VALUES ('Jon', 'Higgz', 'I love coding); -->
-   - 2Create a user named Andrey Rusterton, who's life motto is "I love coding even more".
-   <!-- INSERT INTO users (first_name, last_name, motto) VALUES ('Andrey', 'Rusterton', 'I love coding even more); -->
-   - 3Create a user named Peter Garboni, who's life motto is "I love coding even more".
-   <!-- INSERT INTO users (first_name, last_name, motto) VALUES ('Peter', 'Garboni', 'I love coding even more); -->
+   - 1 Create a user named Jon Higgz, who's life motto is "I love coding".
+   <!-- INSERT INTO users (first_name, last_name, motto) VALUES ('Jon', 'Higgz', 'I love coding'); -->
+   - 2 Create a user named Andrey Rusterton, who's life motto is "I love coding even more".
+   <!-- INSERT INTO users (first_name, last_name, motto) VALUES ('Andrey', 'Rusterton', 'I love coding even more'); -->
+   - 3 Create a user named Peter Garboni, who's life motto is "I love coding even more".
+   <!-- INSERT INTO users (first_name, last_name, motto) VALUES ('Peter', 'Garboni', 'I love coding even more'); -->
 
 2. Dogs
 
-   - 1Create a dog named DOOMSLAYER
-   <!-- INSERT INTO dogs (name) VALUES (DOOMSLAYER); -->
-   - 2Create a dog named Zoey
-   <!-- INSERT INTO dogs (name) VALUES (Zoey); -->
-   - 3Create a dog named Jefferey
-   <!-- INSERT INTO dogs (name) VALUES (Jefferey); -->
+   - 1 Create a dog named DOOMSLAYER
+   <!-- INSERT INTO dogs (name) VALUES ('DOOMSLAYER'); -->
+   - 2 Create a dog named Zoey
+   <!-- INSERT INTO dogs (name) VALUES ('Zoey'); -->
+   - 3 Create a dog named Jefferey
+   <!-- INSERT INTO dogs (name) VALUES ('Jefferey'); -->
 
 3. Favorites
-   - 3Peter Favorites 1Doomslayer
+   - 3 Peter Favorites 1 Doomslayer
    <!-- INSERT INTO favorites (user_id, dog_id) VALUES (3, 1); -->
-   - 1Jon Favorites 1Doomslayer
+   - 1 Jon Favorites 1 Doomslayer
    <!-- INSERT INTO favorites (user_id, dog_id) VALUES (1, 1); -->
-   - 2Andrey Favorites 1Doomslayer
+   - 2 Andrey Favorites 1 Doomslayer
    <!-- INSERT INTO favorites (user_id, dog_id) VALUES (2, 1); -->
-   - 1Jon Favorites 3Jefferey
+   - 1 Jon Favorites 3 Jefferey
    <!-- INSERT INTO favorites (user_id, dog_id) VALUES (1, 3); -->
-   - 2Andrey favorites 2Zoey
+   - 2 Andrey favorites 2 Zoey
    <!-- INSERT INTO favorites (user_id, dog_id) VALUES (2, 2); -->
 
 Go ahead and run `npx jest part1 --watch`. You will need to create a `main.db` and change it via your `sqlite` command on your terminal. As you begin to setup your database you should notice that the tests will respond to the changes if you rerun it.
